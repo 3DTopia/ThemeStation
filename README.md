@@ -2,7 +2,7 @@
 
 ## Code will be released soon.
 
-https://github.com/3DThemeStation/ThemeStation/assets/158151171/a21b247f-5f13-4ddf-9037-033d9f3e03cf
+https://github.com/3DThemeStation/ThemeStation/assets/158151171/cbd2b81b-b224-4bac-92fd-4f612df77172
 
 
 ### [Project page](https://github.com/3DThemeStation/ThemeStation) |   [Paper]() 

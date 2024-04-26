@@ -224,9 +224,6 @@ docker
 test.sh
 clear_useless_outputs.py
 mv_obj_to_path.py
-configs/*
-!configs/theme-station-render.yaml
-!configs/theme-station-optimization.yaml
 logs/
 
 dreambooth/backup_script

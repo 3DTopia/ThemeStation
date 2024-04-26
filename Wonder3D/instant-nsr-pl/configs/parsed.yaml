@@ -1,0 +1,44 @@
+system_type: themestation-system
+system:
+  geometry_type: implicit-sdf # modify
+  geometry: # modify
+    radius: 1.0
+    feature_dim: 13 # modify
+    normal_type: finite_difference # modify
+    finite_difference_normal_eps: progressive # modify
+    isosurface_deformable_grid: true
+    isosurface_remove_outliers: false
+    pos_encoding_config: # modify
+      otype: ProgressiveBandHashGrid
+      n_levels: 10
+      n_features_per_level: 2
+      log2_hashmap_size: 19
+      base_resolution: 32
+      per_level_scale: 1.3195079107728942
+      include_xyz: true
+      start_level: 4
+      start_step: 0
+      update_steps: 1000
+      global_step_offset: 3000
+    mlp_network_config:
+      otype: VanillaMLPWon3D
+      activation: ReLU
+      output_activation: none
+      n_neurons: 64
+      n_hidden_layers: 1
+      sphere_init: true
+      sphere_init_radius: 0.5
+      weight_norm: true
+  material_type: "neural-radiance-material"
+  material:
+    input_feature_dims: 16 #
+    dir_encoding_config:
+      otype: SphericalHarmonics
+      degree: 4
+    mlp_network_config:
+      otype: VanillaMLPWon3D
+      activation: ReLU
+      output_activation: none
+      n_neurons: 64
+      n_hidden_layers: 2
+    color_activation: sigmoid

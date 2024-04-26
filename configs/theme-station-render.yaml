@@ -1,0 +1,138 @@
+name: "themestation-render"
+tag: "${rmspace:${system.prompt_processor.prompt},_}"
+exp_root_dir: "outputs"
+seed: 0
+
+data_type: "random-camera-datamodule"
+data:
+  batch_size: 1
+  width: 512
+  height: 512
+  camera_distance_range: [1.4, 1.7]
+  fovy_range: [65, 75]
+  elevation_range: [0, 20]
+  input_image_elevation_offset: 0
+  camera_perturb: 0.
+  center_perturb: 0.
+  up_perturb: 0.
+  eval_camera_distance: 1.5
+  eval_fovy_deg: 70.
+  n_val_views: 8
+  n_test_views: 180
+  render_img: true # false: will rand uniform images and fixed elevation to 15
+  test_fixed_fovy_dist: false
+
+system_type: "themestation-system"
+system:
+  stage: render
+  use_reference_model_dreambooth: true
+  save_init_img_camera: false
+  visualize_samples: false
+  geometry_convert_from: ???
+  prev_cfg_dir: ??? # parsed.yaml path
+  geometry_type: implicit-sdf # modify
+  geometry_convert_inherit_texture: true
+  geometry: # modify
+    radius: 1.0
+    feature_dim: 13 # modify
+    normal_type: finite_difference # modify
+    finite_difference_normal_eps: progressive # modify
+    isosurface_deformable_grid: true
+    isosurface_remove_outliers: false
+    pos_encoding_config: # modify
+      otype: ProgressiveBandHashGrid
+      n_levels: 10
+      n_features_per_level: 2
+      log2_hashmap_size: 19
+      base_resolution: 32
+      per_level_scale: 1.3195079107728942
+      include_xyz: true
+      start_level: 4
+      start_step: 0
+      update_steps: 1000
+      global_step_offset: 3000 # = Wonder3D training steps + previous optimization steps
+    mlp_network_config:
+      otype: VanillaMLPWon3D
+      activation: ReLU
+      output_activation: none
+      n_neurons: 64
+      n_hidden_layers: 1
+      sphere_init: true
+      sphere_init_radius: 0.5
+      weight_norm: true
+  
+  material_convert_from: ??? # .ckpt path
+  material_type: "neural-radiance-material"
+  material:
+    input_feature_dims: 16 #
+    dir_encoding_config:
+      otype: SphericalHarmonics
+      degree: 4
+    mlp_network_config:
+      otype: VanillaMLPWon3D
+      activation: ReLU
+      output_activation: none
+      n_neurons: 64
+      n_hidden_layers: 2
+    color_activation: sigmoid
+
+  background_type: "solid-color-background"
+
+  renderer_type: "nvdiff-rasterizer"
+  renderer:
+    context_type: gl
+
+  prompt_processor_type: "stable-diffusion-prompt-processor"
+  prompt_processor:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    prompt: ???
+    front_threshold: 30.
+    back_threshold: 30.
+
+  guidance_type: "stable-diffusion-vsd-guidance"
+  guidance:
+    pretrained_model_name_or_path: "stabilityai/stable-diffusion-2-1-base"
+    pretrained_model_name_or_path_lora: "stabilityai/stable-diffusion-2-1"
+    guidance_scale: 7.5
+    min_step_percent: 0.02
+    max_step_percent: [5000, 0.98, 0.5, 5001] # annealed to 0.5 after 5000 steps
+
+  loggers:
+    wandb:
+      enable: false
+      project: "threestudio"
+      name: None
+
+  loss:
+    lambda_vsd: 1.
+    lambda_lora: 1.
+  optimizer:
+    name: AdamW
+    args:
+      betas: [0.9, 0.99]
+      eps: 1.e-15
+    params:
+      geometry.encoding:
+        lr: 0.0
+      geometry.feature_network:
+        lr: 0.0
+      material.encoding:
+        lr: 0.0
+      material.network:
+        lr: 0.0
+
+      guidance:
+        lr: 0.000
+
+trainer:
+  max_steps: 0
+  log_every_n_steps: 1
+  num_sanity_val_steps: 1
+  val_check_interval: 500
+  enable_progress_bar: true
+  precision: 32
+
+checkpoint:
+  save_last: true
+  save_top_k: -1
+  every_n_train_steps: ${trainer.max_steps}

@@ -1,6 +1,6 @@
 # ThemeStation: Generating Theme-Aware 3D Assets from Few Exemplars
 
-## Code will be released soon.
+## NEWS: our paper is accepted to SIGGRAPH 2024!
 
 https://github.com/3DThemeStation/ThemeStation/assets/158151171/cbd2b81b-b224-4bac-92fd-4f612df77172
 

@@ -25,7 +25,7 @@ https://github.com/3DThemeStation/ThemeStation/assets/158151171/cbd2b81b-b224-4b
 - [x] **Release rendering code**
 - [x] **Release StageI code for concept image generation**
 - [x] **Release StageII code for reference-informed 3D assets modeling**
-- [] **Update our code to support more powerful image-to-3d models, such as InstantMesh/CRM to obtain the initial 3D**
+- [ ] **Update our code to support more powerful image-to-3d models, such as InstantMesh/CRM to obtain the initial 3D**
 
 
 

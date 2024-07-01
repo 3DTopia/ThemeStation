@@ -25,7 +25,7 @@ data:
 system_type: "themestation-system"
 system:
   stage: render
-  use_reference_model_dreambooth: true
+  use_reference_model_dreambooth: false
   save_init_img_camera: false
   visualize_samples: false
   geometry_convert_from: ???

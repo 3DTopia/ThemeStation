@@ -5,7 +5,7 @@
 https://github.com/3DThemeStation/ThemeStation/assets/158151171/cbd2b81b-b224-4bac-92fd-4f612df77172
 
 
-### [Project page](https://3dthemestation.github.io/) |   [Paper](https://arxiv.org/abs/2403.15383) 
+### [Project page](https://3dthemestation.github.io/) |   [Paper](https://arxiv.org/abs/2403.15383) | [Video](https://www.youtube.com/watch?v=q6afxQXRl_o)
 
 <!-- <br> -->
 [Zhenwei Wang](https://zhenwwang.github.io/), [Tengfei Wang](https://tengfei-wang.github.io/), [Gerhard Hancke](https://rfidblog.org.uk/), [Ziwei Liu](https://liuziwei7.github.io/) and [Rynson W.H. Lau](https://www.cs.cityu.edu.hk/~rynson/).
@@ -25,7 +25,7 @@ https://github.com/3DThemeStation/ThemeStation/assets/158151171/cbd2b81b-b224-4b
 - [x] **Release rendering code**
 - [x] **Release StageI code for concept image generation**
 - [x] **Release StageII code for reference-informed 3D assets modeling**
-- [] **Update our code to support more powerful image-to-3d models, such as InstantMesh/CRM to obtain the initial 3D**
+- [ ] **Update our code to support more powerful image-to-3d models, such as InstantMesh/CRM to obtain the initial 3D**
 
 
 
@@ -150,15 +150,13 @@ If you find this code helpful for your research, please cite:
 @article{wang2024themestation,
         title={ThemeStation: Generating Theme-Aware 3D Assets from Few Exemplars}, 
         author={Zhenwei Wang and Tengfei Wang and Gerhard Hancke and Ziwei Liu and Rynson W.H. Lau},
-        year={2024},
-        eprint={-},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV}
+        booktitle={ACM SIGGRAPH},
+        year={2024}
   }
 ```
 
 ## Acknowledgments
-We have intensively borrow codes from the following repositories. Many thanks to the authors for sharing their codes.
+We have intensively borrowed codes from the following repositories. Many thanks to the authors for sharing their codes.
 - [threestudio](https://github.com/threestudio-project/threestudio)
 - [Wonder3D](https://github.com/xxlong0/Wonder3D)
 - [Diffusers-DreamBooth](https://github.com/huggingface/diffusers/tree/main/examples/dreambooth)

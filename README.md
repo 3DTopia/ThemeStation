@@ -1,9 +1,9 @@
 # ThemeStation: Generating Theme-Aware 3D Assets from Few Exemplars
 
 ## NEWS: 
-[Sep. 2024] Welcome to follow our new work -> [Phidias](https://rag-3d.github.io/), a unified 3D generative model that supports fast theme-aware 3D-to-3D. Code will be released soon at [here](https://github.com/3DTopia/Phidias-Diffusion).
+- [Sep. 2024] Welcome to follow [Phidias](https://rag-3d.github.io/), our new 3D generative model that supports fast theme-aware 3D-to-3D. Code will be released soon at [here](https://github.com/3DTopia/Phidias-Diffusion).
 
-[Apr. 2024] ThemeStation has been accepted to SIGGRAPH 2024!
+- [Apr. 2024] ThemeStation has been accepted to SIGGRAPH 2024!
 
 
 https://github.com/3DThemeStation/ThemeStation/assets/158151171/cbd2b81b-b224-4bac-92fd-4f612df77172
